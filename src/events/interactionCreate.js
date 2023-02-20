@@ -9,12 +9,13 @@ module.exports = {
       try {
         const command = client.commands.get(interaction.commandName);
         command.run(client, interaction);
-      } catch {
+      } catch (error) {
         interaction.reply({
           content:
             "A problem was encountered while running the command! Please try again.",
           ephemeral: true,
         });
+        console.error(error);
       }
     }
   },
